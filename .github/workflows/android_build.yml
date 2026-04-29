@@ -29,6 +29,12 @@ jobs:
           yes | $ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager --licenses
           $ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager "platform-tools" "platforms;android-33" "build-tools;33.0.2"
 
+      - name: Vérifier AIDL
+        run: |
+          export ANDROID_HOME=$HOME/android-sdk
+          export PATH=$ANDROID_HOME/platform-tools:$ANDROID_HOME/build-tools/33.0.2:$PATH
+          which aidl || echo "AIDL introuvable"
+
       - name: Build APK
         run: |
           export ANDROID_HOME=$HOME/android-sdk
